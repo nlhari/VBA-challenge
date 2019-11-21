@@ -6,7 +6,7 @@ Script runs on test dataset in less than 30sec - that's looping through all the 
 
 Three subroutines in the VBAStock.bas file.
 
-i. VBAStock - this macro includes the assignment and both challenges.  On one click this script loops through each worksheet, execudes the assignment and the challenge.
+i. VBAStock - this macro includes the assignment and both challenges.  On one click this script loops through each worksheet, executes the assignment and the challenge.
 
 ii. WorksheetLoop - this macro is a basic test to loop through each sheet and output sheet name.
 
