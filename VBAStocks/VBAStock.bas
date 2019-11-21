@@ -18,7 +18,7 @@ Sub VBAStock()
   WS_Count = ActiveWorkbook.Worksheets.Count
 
   ' Loop to navigate one sheet at a time. Begin with first sheet.
-  For J = 1 To WS_Count
+  For J = 2 To 2
     Sheets(J).Activate
     ActiveSheet.Select
   
@@ -149,7 +149,7 @@ Sub VBAStock()
     
     Set IncreaseTicker = Range("K2", "K" & (Summary_Table_Row - 1)).Find(What:=greatestIncrease)
     Set DecreaseTicker = Range("K2", "K" & (Summary_Table_Row - 1)).Find(What:=greatestDecrease)
-    Set VolumeTicker = Range("L2:L290").Find(What:=greatestVolume)
+    Set VolumeTicker = Range("L2", "L" & (Summary_Table_Row - 1)).Find(What:=greatestVolume)
          
     ' get the ticker name for the Min and Max changes
     
@@ -210,7 +210,7 @@ Sub Challenge()
     Dim DecreaseTicker As Range
     Dim VolumeTicker As Range
     
-    Summary_Table_Row = 172
+    Summary_Table_Row = 3170
     Range("K:K").NumberFormat = "General"
     
     greatestIncrease = WorksheetFunction.Max(Range("K2", "K" & (Summary_Table_Row - 1)))
@@ -222,7 +222,7 @@ Sub Challenge()
     
     Set IncreaseTicker = Range("K2", "K" & (Summary_Table_Row - 1)).Find(What:=greatestIncrease)
     Set DecreaseTicker = Range("K2", "K" & (Summary_Table_Row - 1)).Find(What:=greatestDecrease)
-    Set VolumeTicker = Range("L2:L290").Find(What:=greatestVolume)
+    Set VolumeTicker = Range("L2", "L" & (Summary_Table_Row - 1)).Find(What:=greatestVolume)
          
     'MsgBox (Range("K2:K290").Find(What:=greatestDecrease))
          
