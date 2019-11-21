@@ -18,7 +18,7 @@ Sub VBAStock()
   WS_Count = ActiveWorkbook.Worksheets.Count
 
   ' Loop to navigate one sheet at a time. Begin with first sheet.
-  For J = 2 To 2
+  For J = 1 To WS_Count
     Sheets(J).Activate
     ActiveSheet.Select
   
