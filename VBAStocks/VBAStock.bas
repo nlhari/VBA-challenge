@@ -109,11 +109,11 @@ Sub VBAStock()
       'Write the results to columns J and K
       Cells(I, 10).Value = yearlyChange
       If yearOpeningValue <> 0 Then
-        ' <>0 is to ensure that if opening value is 0, then it doesn't become a divident throwing an error.
+        ' <>0 is to ensure that if opening value is 0, then it doesn't become a divisor throwing an error.
+
         ' The challenge assignment requires to search the Tickers for Min and Max percentage change from the unique list
         ' turns out the search for Min and Max rows requires exact match of value.
         ' the Round function trims the digits to 4 decimals so the search is match.
-        
         Cells(I, 11).Value = Round(yearlyChange / yearOpeningValue, 4)
         
       Else
@@ -146,18 +146,10 @@ Sub VBAStock()
     greatestVolume = WorksheetFunction.Max(Range("L2", "L" & (Summary_Table_Row - 1)))
     
     ' find the rows with Min and Max values
-    
     Set IncreaseTicker = Range("K2", "K" & (Summary_Table_Row - 1)).Find(What:=greatestIncrease)
     Set DecreaseTicker = Range("K2", "K" & (Summary_Table_Row - 1)).Find(What:=greatestDecrease)
     Set VolumeTicker = Range("L2", "L" & (Summary_Table_Row - 1)).Find(What:=greatestVolume)
          
-    ' get the ticker name for the Min and Max changes
-    
-    Range("P2").Value = IncreaseTicker.Offset(, -2).Value
-    Range("Q2").Value = greatestIncrease
-    Range("P3").Value = DecreaseTicker.Offset(, -2).Value
-    Range("Q3").Value = greatestDecrease
-    
     'Set header for challenge output
     Range("O2").Value = "Greatest % Increase"
     Range("O3").Value = "Greatest % Decrease"
@@ -165,7 +157,13 @@ Sub VBAStock()
     Range("P1").Value = "Ticker"
     Range("Q1").Value = "Value"
    
+    ' get and set the ticker name and values for the Min and Max changes
+    Range("P2").Value = IncreaseTicker.Offset(, -2).Value
+    Range("Q2").Value = greatestIncrease
+    Range("P3").Value = DecreaseTicker.Offset(, -2).Value
+    Range("Q3").Value = greatestDecrease
     
+    ' get and set the ticker name and values for most volume changes
     Range("P4").Value = VolumeTicker.Offset(, -3).Value
     Range("Q4").Value = greatestVolume
     
@@ -174,8 +172,7 @@ Sub VBAStock()
     Range("K:K").NumberFormat = "0.00%"
     Range("O:O").Columns.AutoFit
     Range("Q2:Q3").NumberFormat = "0.00%"
-    
-
+  
   Next J
 
 End Sub
